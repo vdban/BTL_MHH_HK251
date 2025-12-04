@@ -1,0 +1,136 @@
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+    <net id="complex-net-20"
+        type="http://www.pnml.org/version-2009/grammar/ptnet">
+        <name>
+            <text>complex_test_20</text>
+        </name>
+
+        <page id="page-001">
+
+            <!-- Places -->
+            <place id="P1">
+                <initialMarking>
+                    <text>1</text>
+                </initialMarking>
+            </place>
+            <place id="P2"></place>
+            <place id="P3"></place>
+            <place id="P4"></place>
+            <place id="P5"></place>
+            <place id="P6"></place>
+            <place id="P7"></place>
+            <place id="P8"></place>
+            <place id="P9"></place>
+            <place id="P10"></place>
+
+            <!-- Branch 3 places -->
+            <place id="P11"></place>
+            <place id="P12"></place>
+            <place id="P13"></place>
+
+            <!-- Branch 4 updated places -->
+            <place id="P14"></place>
+            <place id="P15"></place>
+            <place id="P16"></place>
+            <place id="P17"></place>
+            <place id="P18"></place>
+
+            <!-- UNused removed P19 P20 -->
+
+            <!-- Transitions -->
+            <transition id="T1"></transition>
+            <transition id="T2"></transition>
+            <transition id="T3"></transition>
+            <transition id="T4"></transition>
+            <transition id="T5"></transition>
+            <transition id="T6"></transition>
+            <transition id="T7"></transition>
+            <transition id="T8"></transition>
+            <transition id="T9"></transition>
+            <transition id="T10"></transition>
+
+            <!-- Branch 3 transitions -->
+            <transition id="T11"></transition>
+            <transition id="T12"></transition>
+            <transition id="T13"></transition>
+            <transition id="T14"></transition>
+
+            <!-- Branch 4 updated transitions -->
+            <transition id="T15"></transition>
+            <transition id="T16"></transition>
+            <transition id="T17"></transition>
+            <transition id="T18"></transition>
+            <transition id="T19"></transition>
+            <transition id="T20"></transition>
+
+            <!-- Original split -->
+            <arc source="P1" target="T1" />
+            <arc source="T1" target="P2" />
+            <arc source="T1" target="P5" />
+
+            <!-- Branch 1 -->
+            <arc source="P2" target="T2" />
+            <arc source="T2" target="P3" />
+            <arc source="P3" target="T3" />
+            <arc source="T3" target="P4" />
+            <arc source="P4" target="T8" />
+            <arc source="T8" target="P9" />
+
+            <!-- Branch 2 -->
+            <arc source="P5" target="T4" />
+            <arc source="T4" target="P6" />
+            <arc source="P6" target="T5" />
+            <arc source="T5" target="P7" />
+            <arc source="P7" target="T9" />
+            <arc source="T9" target="P9" />
+
+            <!-- Branch 3 -->
+            <arc source="P1" target="T11" />
+            <arc source="T11" target="P11" />
+            <arc source="P11" target="T12" />
+            <arc source="T12" target="P12" />
+            <arc source="P12" target="T13" />
+            <arc source="T13" target="P13" />
+            <arc source="P13" target="T14" />
+            <arc source="T14" target="P9" />
+
+            <!-- Branch 4 (corrected & extended) -->
+            <arc source="P1" target="T15" />
+            <arc source="T15" target="P14" />
+            <arc source="P14" target="T16" />
+            <arc source="T16" target="P15" />
+            <arc source="P15" target="T17" />
+            <arc source="T17" target="P16" />
+            <arc source="P16" target="T18" />
+            <arc source="T18" target="P17" />
+            <arc source="P17" target="T19" />
+            <arc source="T19" target="P18" />
+            <arc source="P18" target="T20" />
+            <arc source="T20" target="P9" />
+
+            <!-- Merge & loop -->
+            <arc source="P9" target="T10" />
+            <arc source="T10" target="P10" />
+            <arc source="P10" target="T7" />
+            <arc source="T7" target="P1" />
+
+            <arc source="P1" target="T6" />
+            <arc source="T6" target="P8" />
+            <arc source="P8" target="T11" />
+
+
+            <!-- Branch 5 -->
+            <place id="P19"></place>
+            <place id="P20"></place>
+            <transition id="T21"></transition>
+            <transition id="T22"></transition>
+            <transition id="T23"></transition>
+            <arc source="P1" target="T21" />
+            <arc source="T21" target="P19" />
+            <arc source="P19" target="T22" />
+            <arc source="T22" target="P20" />
+            <arc source="P20" target="T23" />
+            <arc source="T23" target="P10" />
+        </page>
+    </net>
+</pnml>

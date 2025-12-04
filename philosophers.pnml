@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Philosophers" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <page id="page0">
+
+      <place id="FORK_1"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_2"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_3"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_4"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_5"><initialMarking><text>1</text></initialMarking></place>
+
+      <place id="THINK_1"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_2"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_3"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_4"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_5"><initialMarking><text>1</text></initialMarking></place>
+
+      <place id="WAIT_RIGHT_1"/>
+      <place id="WAIT_RIGHT_2"/>
+      <place id="WAIT_RIGHT_3"/>
+      <place id="WAIT_RIGHT_4"/>
+      <place id="WAIT_RIGHT_5"/>
+
+      <place id="EAT_1"/>
+      <place id="EAT_2"/>
+      <place id="EAT_3"/>
+      <place id="EAT_4"/>
+      <place id="EAT_5"/>
+
+      <transition id="TAKE_LEFT_1"/>
+      <transition id="TAKE_LEFT_2"/>
+      <transition id="TAKE_LEFT_3"/>
+      <transition id="TAKE_LEFT_4"/>
+      <transition id="TAKE_LEFT_5"/>
+
+      <transition id="TAKE_RIGHT_1"/>
+      <transition id="TAKE_RIGHT_2"/>
+      <transition id="TAKE_RIGHT_3"/>
+      <transition id="TAKE_RIGHT_4"/>
+      <transition id="TAKE_RIGHT_5"/>
+
+      <transition id="RELEASE_1"/>
+      <transition id="RELEASE_2"/>
+      <transition id="RELEASE_3"/>
+      <transition id="RELEASE_4"/>
+      <transition id="RELEASE_5"/>
+
+      <arc id="a1_1" source="THINK_1" target="TAKE_LEFT_1"/>
+      <arc id="a1_2" source="FORK_1" target="TAKE_LEFT_1"/>
+      <arc id="a1_3" source="TAKE_LEFT_1" target="WAIT_RIGHT_1"/>
+      <arc id="a1_4" source="WAIT_RIGHT_1" target="TAKE_RIGHT_1"/>
+      <arc id="a1_5" source="FORK_5" target="TAKE_RIGHT_1"/>
+      <arc id="a1_6" source="TAKE_RIGHT_1" target="EAT_1"/>
+      <arc id="a1_7" source="EAT_1" target="RELEASE_1"/>
+      <arc id="a1_8" source="RELEASE_1" target="THINK_1"/>
+      <arc id="a1_9" source="RELEASE_1" target="FORK_1"/>
+      <arc id="a1_10" source="RELEASE_1" target="FORK_5"/>
+
+      <arc id="a2_1" source="THINK_2" target="TAKE_LEFT_2"/>
+      <arc id="a2_2" source="FORK_2" target="TAKE_LEFT_2"/>
+      <arc id="a2_3" source="TAKE_LEFT_2" target="WAIT_RIGHT_2"/>
+      <arc id="a2_4" source="WAIT_RIGHT_2" target="TAKE_RIGHT_2"/>
+      <arc id="a2_5" source="FORK_1" target="TAKE_RIGHT_2"/>
+      <arc id="a2_6" source="TAKE_RIGHT_2" target="EAT_2"/>
+      <arc id="a2_7" source="EAT_2" target="RELEASE_2"/>
+      <arc id="a2_8" source="RELEASE_2" target="THINK_2"/>
+      <arc id="a2_9" source="RELEASE_2" target="FORK_2"/>
+      <arc id="a2_10" source="RELEASE_2" target="FORK_1"/>
+
+      <arc id="a3_1" source="THINK_3" target="TAKE_LEFT_3"/>
+      <arc id="a3_2" source="FORK_3" target="TAKE_LEFT_3"/>
+      <arc id="a3_3" source="TAKE_LEFT_3" target="WAIT_RIGHT_3"/>
+      <arc id="a3_4" source="WAIT_RIGHT_3" target="TAKE_RIGHT_3"/>
+      <arc id="a3_5" source="FORK_2" target="TAKE_RIGHT_3"/>
+      <arc id="a3_6" source="TAKE_RIGHT_3" target="EAT_3"/>
+      <arc id="a3_7" source="EAT_3" target="RELEASE_3"/>
+      <arc id="a3_8" source="RELEASE_3" target="THINK_3"/>
+      <arc id="a3_9" source="RELEASE_3" target="FORK_3"/>
+      <arc id="a3_10" source="RELEASE_3" target="FORK_2"/>
+
+      <arc id="a4_1" source="THINK_4" target="TAKE_LEFT_4"/>
+      <arc id="a4_2" source="FORK_4" target="TAKE_LEFT_4"/>
+      <arc id="a4_3" source="TAKE_LEFT_4" target="WAIT_RIGHT_4"/>
+      <arc id="a4_4" source="WAIT_RIGHT_4" target="TAKE_RIGHT_4"/>
+      <arc id="a4_5" source="FORK_3" target="TAKE_RIGHT_4"/>
+      <arc id="a4_6" source="TAKE_RIGHT_4" target="EAT_4"/>
+      <arc id="a4_7" source="EAT_4" target="RELEASE_4"/>
+      <arc id="a4_8" source="RELEASE_4" target="THINK_4"/>
+      <arc id="a4_9" source="RELEASE_4" target="FORK_4"/>
+      <arc id="a4_10" source="RELEASE_4" target="FORK_3"/>
+
+      <arc id="a5_1" source="THINK_5" target="TAKE_LEFT_5"/>
+      <arc id="a5_2" source="FORK_5" target="TAKE_LEFT_5"/>
+      <arc id="a5_3" source="TAKE_LEFT_5" target="WAIT_RIGHT_5"/>
+      <arc id="a5_4" source="WAIT_RIGHT_5" target="TAKE_RIGHT_5"/>
+      <arc id="a5_5" source="FORK_4" target="TAKE_RIGHT_5"/>
+      <arc id="a5_6" source="TAKE_RIGHT_5" target="EAT_5"/>
+      <arc id="a5_7" source="EAT_5" target="RELEASE_5"/>
+      <arc id="a5_8" source="RELEASE_5" target="THINK_5"/>
+      <arc id="a5_9" source="RELEASE_5" target="FORK_5"/>
+      <arc id="a5_10" source="RELEASE_5" target="FORK_4"/>
+
+    </page>
+  </net>
+</pnml>

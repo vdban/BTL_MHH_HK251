@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Philosophers" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <page id="page0">
+
+      <!-- ==================== PLACES ==================== -->
+
+      <!-- Forks (5 cái đũa) -->
+      <place id="FORK_1"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_2"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_3"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_4"><initialMarking><text>1</text></initialMarking></place>
+      <place id="FORK_5"><initialMarking><text>1</text></initialMarking></place>
+
+      <!-- Philosophers: THINK state (ban đầu đang nghĩ) -->
+      <place id="THINK_1"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_2"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_3"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_4"><initialMarking><text>1</text></initialMarking></place>
+      <place id="THINK_5"><initialMarking><text>1</text></initialMarking></place>
+
+      <!-- Intermediate states: Waiting for right fork -->
+      <place id="WAIT_RIGHT_1"/>
+      <place id="WAIT_RIGHT_2"/>
+      <place id="WAIT_RIGHT_3"/>
+      <place id="WAIT_RIGHT_4"/>
+      <place id="WAIT_RIGHT_5"/>
+
+      <!-- Eating state -->
+      <place id="EAT_1"/>
+      <place id="EAT_2"/>
+      <place id="EAT_3"/>
+      <place id="EAT_4"/>
+      <place id="EAT_5"/>
+
+      <!-- ==================== TRANSITIONS ==================== -->
+
+      <!-- Take Left Fork -->
+      <transition id="TAKE_LEFT_1"/>
+      <transition id="TAKE_LEFT_2"/>
+      <transition id="TAKE_LEFT_3"/>
+      <transition id="TAKE_LEFT_4"/>
+      <transition id="TAKE_LEFT_5"/>
+
+      <!-- Take Right Fork -->
+      <transition id="TAKE_RIGHT_1"/>
+      <transition id="TAKE_RIGHT_2"/>
+      <transition id="TAKE_RIGHT_3"/>
+      <transition id="TAKE_RIGHT_4"/>
+      <transition id="TAKE_RIGHT_5"/>
+
+      <!-- Start Eating -->
+      <transition id="EAT_1"/>
+      <transition id="EAT_2"/>
+      <transition id="EAT_3"/>
+      <transition id="EAT_4"/>
+      <transition id="EAT_5"/>
+
+      <!-- Release Forks -->
+      <transition id="RELEASE_1"/>
+      <transition id="RELEASE_2"/>
+      <transition id="RELEASE_3"/>
+      <transition id="RELEASE_4"/>
+      <transition id="RELEASE_5"/>
+
+      <!-- ==================== ARCS - PHILOSOPHER 1 ==================== -->
+      <arc id="p1_think_to_left" source="THINK_1" target="TAKE_LEFT_1"/>
+      <arc id="p1_fork1_to_left" source="FORK_1" target="TAKE_LEFT_1"/>
+      <arc id="p1_left_to_wait" source="TAKE_LEFT_1" target="WAIT_RIGHT_1"/>
+      <arc id="p1_wait_to_right" source="WAIT_RIGHT_1" target="TAKE_RIGHT_1"/>
+      <arc id="p1_fork5_to_right" source="FORK_5" target="TAKE_RIGHT_1"/>
+      <arc id="p1_right_to_eat" source="TAKE_RIGHT_1" target="EAT_1"/>
+      <arc id="p1_eat_to_release" source="EAT_1" target="RELEASE_1"/>
+      <arc id="p1_release_to_think" source="RELEASE_1" target="THINK_1"/>
+      <arc id="p1_release_fork1" source="RELEASE_1" target="FORK_1"/>
+      <arc id="p1_release_fork5" source="RELEASE_1" target="FORK_5"/>
+
+      <!-- ==================== ARCS - PHILOSOPHER 2 ==================== -->
+      <arc id="p2_think_to_left" source="THINK_2" target="TAKE_LEFT_2"/>
+      <arc id="p2_fork2_to_left" source="FORK_2" target="TAKE_LEFT_2"/>
+      <arc id="p2_left_to_wait" source="TAKE_LEFT_2" target="WAIT_RIGHT_2"/>
+      <arc id="p2_wait_to_right" source="WAIT_RIGHT_2" target="TAKE_RIGHT_2"/>
+      <arc id="p2_fork1_to_right" source="FORK_1" target="TAKE_RIGHT_2"/>
+      <arc id="p2_right_to_eat" source="TAKE_RIGHT_2" target="EAT_2"/>
+      <arc id="p2_eat_to_release" source="EAT_2" target="RELEASE_2"/>
+      <arc id="p2_release_to_think" source="RELEASE_2" target="THINK_2"/>
+      <arc id="p2_release_fork2" source="RELEASE_2" target="FORK_2"/>
+      <arc id="p2_release_fork1" source="RELEASE_2" target="FORK_1"/>
+
+      <!-- ==================== ARCS - PHILOSOPHER 3 ==================== -->
+      <arc id="p3_think_to_left" source="THINK_3" target="TAKE_LEFT_3"/>
+      <arc id="p3_fork3_to_left" source="FORK_3" target="TAKE_LEFT_3"/>
+      <arc id="p3_left_to_wait" source="TAKE_LEFT_3" target="WAIT_RIGHT_3"/>
+      <arc id="p3_wait_to_right" source="WAIT_RIGHT_3" target="TAKE_RIGHT_3"/>
+      <arc id="p3_fork2_to_right" source="FORK_2" target="TAKE_RIGHT_3"/>
+      <arc id="p3_right_to_eat" source="TAKE_RIGHT_3" target="EAT_3"/>
+      <arc id="p3_eat_to_release" source="EAT_3" target="RELEASE_3"/>
+      <arc id="p3_release_to_think" source="RELEASE_3" target="THINK_3"/>
+      <arc id="p3_release_fork3" source="RELEASE_3" target="FORK_3"/>
+      <arc id="p3_release_fork2" source="RELEASE_3" target="FORK_2"/>
+
+      <!-- ==================== ARCS - PHILOSOPHER 4 ==================== -->
+      <arc id="p4_think_to_left" source="THINK_4" target="TAKE_LEFT_4"/>
+      <arc id="p4_fork4_to_left" source="FORK_4" target="TAKE_LEFT_4"/>
+      <arc id="p4_left_to_wait" source="TAKE_LEFT_4" target="WAIT_RIGHT_4"/>
+      <arc id="p4_wait_to_right" source="WAIT_RIGHT_4" target="TAKE_RIGHT_4"/>
+      <arc id="p4_fork3_to_right" source="FORK_3" target="TAKE_RIGHT_4"/>
+      <arc id="p4_right_to_eat" source="TAKE_RIGHT_4" target="EAT_4"/>
+      <arc id="p4_eat_to_release" source="EAT_4" target="RELEASE_4"/>
+      <arc id="p4_release_to_think" source="RELEASE_4" target="THINK_4"/>
+      <arc id="p4_release_fork4" source="RELEASE_4" target="FORK_4"/>
+      <arc id="p4_release_fork3" source="RELEASE_4" target="FORK_3"/>
+
+      <!-- ==================== ARCS - PHILOSOPHER 5 ==================== -->
+      <arc id="p5_think_to_left" source="THINK_5" target="TAKE_LEFT_5"/>
+      <arc id="p5_fork5_to_left" source="FORK_5" target="TAKE_LEFT_5"/>
+      <arc id="p5_left_to_wait" source="TAKE_LEFT_5" target="WAIT_RIGHT_5"/>
+      <arc id="p5_wait_to_right" source="WAIT_RIGHT_5" target="TAKE_RIGHT_5"/>
+      <arc id="p5_fork4_to_right" source="FORK_4" target="TAKE_RIGHT_5"/>
+      <arc id="p5_right_to_eat" source="TAKE_RIGHT_5" target="EAT_5"/>
+      <arc id="p5_eat_to_release" source="EAT_5" target="RELEASE_5"/>
+      <arc id="p5_release_to_think" source="RELEASE_5" target="THINK_5"/>
+      <arc id="p5_release_fork5" source="RELEASE_5" target="FORK_5"/>
+      <arc id="p5_release_fork4" source="RELEASE_5" target="FORK_4"/>
+
+    </page>
+  </net>
+</pnml>

@@ -8,7 +8,7 @@ Bài tập lớn Mô hình hóa - Petri Nets - HK251
 
 ## Cách biên dịch và chạy program
 ### Biên dịch
-**g++ -o app main.cpp petri.cpp optimization.cpp tinyxml2.cpp -lcudd -lglpk -DUSE_GLPK
+**g++ -o app main.cpp petri.cpp optimization.cpp tinyxml2.cpp -lcudd -lglpk -DUSE_GLPK**
 
 ### Chạy program
 - Bước 1: Kiểm tra coi Linux có tìm thấy thư viện CUDD không

@@ -10,8 +10,8 @@ Bài tập lớn Mô hình hóa - Petri Nets - HK251
   * **TinyXML2**: Đã được tích hợp sẵn trong mã nguồn (`tinyxml2.cpp`) và (`tinyxml2.h`), không cần cài đặt, tải qua link Github: **https://github.com/leethomason/tinyxml2**
 ## Cách biên dịch và chạy program (nên cài các thư viện trên trước khi biên dịch)
 Có thể cài các thư viện bằng lệnh sau:
-**sudo apt-get update**
-**sudo apt-get install build-essential libcudd-dev libglpk-dev**
+* **sudo apt-get update**
+* **sudo apt-get install build-essential libcudd-dev libglpk-dev**
 
 ### Biên dịch bằng lệnh sau:
 **g++ -o app main.cpp petri.cpp optimization.cpp tinyxml2.cpp -lcudd -lglpk -DUSE_GLPK**
